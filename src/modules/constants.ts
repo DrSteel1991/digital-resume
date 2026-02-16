@@ -1,4 +1,4 @@
-import type { ResumeData } from './types'
+import type { AssistantConfig, ResumeData } from './types'
 
 export const resumeData: ResumeData = {
   name: 'Anthony AL Helou',
@@ -151,3 +151,10 @@ export const suggestedQuestions = [
   'How can I contact Anthony?',
   "What is Anthony's education?",
 ]
+
+export const assistantConfig: AssistantConfig = {
+  mode: 'mock',
+  endpoint: '/api/chat',
+  requestTimeoutMs: 8000,
+  mockDelayMs: 500,
+}

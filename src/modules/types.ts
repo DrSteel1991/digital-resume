@@ -36,3 +36,21 @@ export type ResumeData = {
   education: Education[]
   languages: string[]
 }
+
+export type AssistantMode = 'mock' | 'http'
+
+export type AssistantConfig = {
+  mode: AssistantMode
+  endpoint: string
+  requestTimeoutMs: number
+  mockDelayMs: number
+}
+
+export type AssistantAskParams = {
+  question: string
+  resumeData: ResumeData
+}
+
+export type AssistantClient = {
+  ask: (params: AssistantAskParams) => Promise<string>
+}

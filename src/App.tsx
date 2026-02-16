@@ -1,13 +1,17 @@
 import './App.css'
-import { resumeData, suggestedQuestions } from './constants'
-import AIAssistant from './pages/AIAssistant'
-import Resume from './pages/Resume'
+import { assistantConfig, resumeData, suggestedQuestions } from './modules/constants'
+import AIAssistant from './pages/AIAssistant/AIAssistant'
+import Resume from './pages/Resume/Resume'
 
 function App() {
   return (
     <main className="page">
       <Resume resumeData={resumeData} />
-      <AIAssistant resumeData={resumeData} suggestedQuestions={suggestedQuestions} />
+      <AIAssistant
+        resumeData={resumeData}
+        suggestedQuestions={suggestedQuestions}
+        assistantConfig={assistantConfig}
+      />
     </main>
   )
 }

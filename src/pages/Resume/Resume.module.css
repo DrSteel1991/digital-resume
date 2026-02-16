@@ -1,0 +1,108 @@
+.resume {
+  background: #ffffff;
+  border: 1px solid #e6e8ed;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 8px 24px rgba(8, 15, 40, 0.06);
+}
+
+.resumeHeader {
+  border-bottom: 1px solid #e6e8ed;
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.resume h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.subtitle {
+  margin: 0.25rem 0 0;
+  color: #475467;
+  font-weight: 600;
+}
+
+.contact {
+  margin: 0.5rem 0 0;
+  color: #667085;
+  font-size: 0.95rem;
+}
+
+.section {
+  margin-bottom: 1.5rem;
+}
+
+.section:last-of-type {
+  margin-bottom: 0;
+}
+
+.section h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1.2rem;
+  color: #101828;
+}
+
+.section p {
+  margin: 0.5rem 0;
+  color: #344054;
+}
+
+.item {
+  margin-bottom: 0.9rem;
+}
+
+.item:last-of-type {
+  margin-bottom: 0;
+}
+
+.itemHeader {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+
+.itemHeader h3 {
+  margin: 0;
+  font-size: 1rem;
+  color: #1d2939;
+}
+
+.itemHeader span {
+  font-size: 0.9rem;
+  color: #667085;
+}
+
+.item ul {
+  margin: 0.4rem 0 0;
+  padding-left: 1.25rem;
+  color: #344054;
+}
+
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.skills li {
+  background: #f2f4f7;
+  border-radius: 999px;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.9rem;
+  color: #1d2939;
+}
+
+@media (max-width: 640px) {
+  .resume {
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    padding: 1.25rem;
+  }
+}
