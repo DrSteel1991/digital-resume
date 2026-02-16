@@ -19,18 +19,15 @@ export const createRuleBasedReply = (question: string, resumeData: ResumeData): 
   }
 
   if (q.includes('about') || q.includes('summary') || q.includes('who')) {
-    return resumeData.about
+    return `Profile summary:\n- ${resumeData.about}`
   }
 
   if (q.includes('experience') || q.includes('work') || q.includes('job')) {
-    return resumeData.experiences
-      .map(
-        (item) =>
-          `${item.role} at ${item.company} in ${item.location} (${item.period}). Key work: ${item.highlights.join(
-            ' '
-          )}`
-      )
-      .join(' ')
+    const bullets = resumeData.experiences.map(
+      (item) =>
+        `${item.role} at ${item.company} (${item.period}, ${item.location}) - ${item.highlights[0]}`
+    )
+    return `Here is ${resumeData.name}'s experience:\n${bullets.map((item) => `- ${item}`).join('\n')}`
   }
 
   if (q.includes('project') || q.includes('built') || q.includes('portfolio')) {
@@ -38,9 +35,9 @@ export const createRuleBasedReply = (question: string, resumeData: ResumeData): 
       return 'No dedicated projects section is listed in this resume yet.'
     }
 
-    return resumeData.projects
-      .map((project) => `${project.name}: ${project.description}`)
-      .join(' ')
+    return `Highlighted projects:\n${resumeData.projects
+      .map((project) => `- ${project.name}: ${project.description}`)
+      .join('\n')}`
   }
 
   if (
@@ -49,20 +46,22 @@ export const createRuleBasedReply = (question: string, resumeData: ResumeData): 
     q.includes('stack') ||
     q.includes('tools')
   ) {
-    return `Core skills include ${resumeData.skills.join(', ')}.`
+    return `Core skills include:\n${resumeData.skills.map((skill) => `- ${skill}`).join('\n')}`
   }
 
   if (q.includes('education') || q.includes('study') || q.includes('degree')) {
-    return resumeData.education
+    return `Education:\n${resumeData.education
       .map(
         (item) =>
-          `${item.degree} from ${item.school}, ${item.location} (${item.period}).`
+          `- ${item.degree} - ${item.school} (${item.period}, ${item.location})`
       )
-      .join(' ')
+      .join('\n')}`
   }
 
   if (q.includes('language') || q.includes('speak')) {
-    return `${resumeData.name} speaks ${resumeData.languages.join(', ')}.`
+    return `${resumeData.name} speaks:\n${resumeData.languages
+      .map((language) => `- ${language}`)
+      .join('\n')}`
   }
 
   if (q.includes('nationality')) {

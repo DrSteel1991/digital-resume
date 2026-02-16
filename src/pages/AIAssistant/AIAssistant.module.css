@@ -103,6 +103,23 @@
   font-weight: 700;
 }
 
+.messageBlock {
+  margin-top: 0.35rem;
+}
+
+.messageParagraph {
+  margin: 0.35rem 0 0;
+}
+
+.messageList {
+  margin: 0.35rem 0 0;
+  padding-left: 1.1rem;
+}
+
+.messageList li {
+  margin-bottom: 0.2rem;
+}
+
 .messageAssistant {
   background: #eef4ff;
   color: #1d2939;

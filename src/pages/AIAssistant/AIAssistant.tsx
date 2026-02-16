@@ -10,6 +10,54 @@ type AIAssistantProps = {
   assistantConfig: AssistantConfig
 }
 
+const renderAssistantMessage = (text: string) => {
+  const paragraphs = text.split('\n\n')
+
+  return paragraphs.map((paragraph, paragraphIndex) => {
+    const lines = paragraph
+      .split('\n')
+      .map((line) => line.trim())
+      .filter(Boolean)
+
+    if (lines.length === 0) {
+      return null
+    }
+
+    const bulletLines = lines.filter((line) => line.startsWith('- '))
+    if (bulletLines.length === lines.length) {
+      return (
+        <ul key={`list-${paragraphIndex}`} className={styles.messageList}>
+          {bulletLines.map((line, lineIndex) => (
+            <li key={`list-item-${paragraphIndex}-${lineIndex}`}>{line.slice(2)}</li>
+          ))}
+        </ul>
+      )
+    }
+
+    const firstBulletIndex = lines.findIndex((line) => line.startsWith('- '))
+    if (firstBulletIndex > 0) {
+      const heading = lines.slice(0, firstBulletIndex).join(' ')
+      const bullets = lines.slice(firstBulletIndex)
+      return (
+        <div key={`mixed-${paragraphIndex}`} className={styles.messageBlock}>
+          <p className={styles.messageParagraph}>{heading}</p>
+          <ul className={styles.messageList}>
+            {bullets.map((line, lineIndex) => (
+              <li key={`mixed-item-${paragraphIndex}-${lineIndex}`}>{line.slice(2)}</li>
+            ))}
+          </ul>
+        </div>
+      )
+    }
+
+    return (
+      <p key={`paragraph-${paragraphIndex}`} className={styles.messageParagraph}>
+        {lines.join(' ')}
+      </p>
+    )
+  })
+}
+
 function AIAssistant({
   resumeData,
   suggestedQuestions,
@@ -143,7 +191,7 @@ function AIAssistant({
             }`}
           >
             <strong>{message.role === 'assistant' ? 'Assistant' : 'You'}:</strong>{' '}
-            {message.text}
+            {message.role === 'assistant' ? renderAssistantMessage(message.text) : message.text}
           </div>
         ))}
       </div>
