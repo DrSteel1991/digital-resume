@@ -2,50 +2,37 @@
 
 A React + TypeScript + Vite digital resume with:
 - Resume sections (`About`, `Experience`, `Skills`, `Education`, `Languages`)
-- A chat assistant with a frontend-only provider architecture (`mock` and `http` modes)
+- A chat assistant with a frontend-only provider architecture
 
-## Local development
+Live app: [digital-resume-eight-alpha.vercel.app](https://digital-resume-eight-alpha.vercel.app)
 
-```bash
-npm install
-npm run dev
-```
+## Interview Q&A
 
-## Build
+### What is your typical workflow from an idea, AI prototype, to production feature?
 
-```bash
-npm run build
-npm run preview
-```
+My workflow is discover, prototype, then productionize.
 
-## Deploy to Vercel
+1. Discover: I clarify the user problem, success metrics, constraints, and failure modes.
+2. Prototype fast: I build a thin vertical slice with a good UX loop first, often using mocked or deterministic AI responses.
+3. Productionize incrementally: I swap mocks for real integrations behind clean interfaces, then add error handling, analytics, tests, security, performance checks, and rollout safeguards.
 
-### Option 1: Vercel dashboard (recommended)
-1. Push this project to GitHub.
-2. Go to [Vercel](https://vercel.com/new).
-3. Import the GitHub repository.
-4. Vercel should auto-detect Vite settings. Deploy.
+I keep architecture modular so the UI does not need to change when data providers evolve (for example, switching from mock to HTTP).
 
-This repo includes `vercel.json` with explicit build settings:
-- Build command: `npm run build`
-- Output directory: `dist`
-- Install command: `npm install`
+### What's your go-to stack and any tools/tech you're interested in?
 
-### Option 2: Vercel CLI
+My go-to stack is React + TypeScript on the frontend, with a strong focus on component architecture, state management, and UX quality. I usually work with Vite, TanStack Query, and modular CSS (or a design-system approach) depending on project needs.
 
-```bash
-npm i -g vercel
-vercel
-```
+For tooling, I rely on ESLint, TypeScript strictness, and lightweight testing to keep velocity high without losing quality. I also value CI/CD and developer experience tooling that makes delivery predictable.
 
-For production deployment:
+Tech I am currently most interested in includes AI-assisted product features with clear UX guardrails, frontend observability and performance tooling, modern React patterns for scalable UI architecture, and accessibility/design-system consistency at scale.
 
-```bash
-vercel --prod
-```
+### What does "good" human-AI interaction look like to you?
 
-## Assistant mode
+Good human-AI interaction is clear, trustworthy, and user-controlled.
 
-Assistant behavior is configured in `src/modules/constants.ts`:
-- `mode: 'mock'` uses deterministic local responses.
-- `mode: 'http'` is frontend-ready for an API endpoint at `endpoint`.
+1. Clarity: the AI should communicate what it can do, what it cannot do, and why it returned a certain result.
+2. Reliability: responses should be grounded in available context, with graceful handling of uncertainty instead of confident guesses.
+3. Control: users should be able to refine prompts, retry, and correct the assistant quickly without friction.
+4. Feedback loop: the interface should support fast iteration, including loading states, error states, and clear next actions.
+
+In short, good human-AI UX augments user judgment rather than replacing it.
